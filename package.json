@@ -1,0 +1,24 @@
+{
+  "name": "kite",
+  "version": "0.0.0",
+  "description": "Web browser automation",
+  "main": "kite.js",
+  "scripts": {
+    "test": "cucumber.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbpros/kite.git"
+  },
+  "keywords": [
+    "web",
+    "automation",
+    "capybara",
+    "browser",
+    "test",
+    "bdd",
+    "tdd"
+  ],
+  "author": "Julien Biezemans <jb@jbpros.com> (http://jbpros.net)",
+  "license": "MIT"
+}
