@@ -1,8 +1,9 @@
 Q             = require "q"
 ZombieBrowser = require "zombie"
-FormData      = require("./zombie_driver/form_data").FormData
+FormData      = require "./zombie_driver/form_data"
+Driver        = require "../driver"
 
-class ZombieDriver
+class ZombieDriver extends Driver
 
   constructor: (options) ->
     @browser = new ZombieBrowser options

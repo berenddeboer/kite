@@ -26,4 +26,4 @@ class FormData extends Array
       fs.readFileSync fileName
     file
 
-module.exports.FormData = FormData
+module.exports = FormData
