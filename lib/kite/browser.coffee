@@ -18,4 +18,7 @@ class Browser
   query: (selector, callback) ->
     @driver.findElementBySelector selector, callback
 
+  getText: (callback) ->
+    @driver.getText callback
+
 module.exports = Browser

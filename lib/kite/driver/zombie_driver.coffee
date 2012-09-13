@@ -41,6 +41,10 @@ class ZombieDriver extends Driver
       callback null
     , (err) -> callback err
 
+  getText: (selector) ->
+    # TODO
+    throw new Error "NOT IMPLEMENTED"
+
   findElementBySelector: (selector, callback) ->
     try
       target = @browser.link(selector) or @browser.button(selector) or @browser.querySelector(selector)
