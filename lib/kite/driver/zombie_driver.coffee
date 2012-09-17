@@ -17,7 +17,7 @@ class ZombieDriver extends Driver
   visitUri: (uri, options, callback) ->
     [options, callback] = [{}, options] unless callback?
 
-    visit = @_browserCall "visit", uri, options
+    visit = @_do "visit", uri, options
     visit.then ->
       callback null
     , (err) -> callback err
@@ -26,17 +26,17 @@ class ZombieDriver extends Driver
     @_findElementBySelector selector, (err, target) =>
       return callback err if err?
 
-      click = @_browserCall "fire", "click", target
+      click = @_do "fire", "click", target
       click.then ->
         callback null
       , (err) -> callback err
 
   fill: (selector, value, callback) ->
-    @_browserCall "fill", selector, value
+    @_do "fill", selector, value
     callback null
 
   attach: (selector, filePath, callback) ->
-    attach = @_browserCall "attach", selector, filePath
+    attach = @_do "attach", selector, filePath
     attach.then ->
       callback null
     , (err) -> callback err
@@ -54,7 +54,7 @@ class ZombieDriver extends Driver
     else
       callback new Error "Could not find selector \"#{selector}\" in\n #{@browser.html()}"
 
-  _browserCall: (method, args...) ->
+  _do: (method, args...) ->
     deferred = Q.defer()
     try
       promise = @browser[method].apply @browser, args
