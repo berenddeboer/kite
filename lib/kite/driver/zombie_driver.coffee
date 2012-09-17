@@ -23,7 +23,7 @@ class ZombieDriver extends Driver
     , (err) -> callback err
 
   click: (selector, callback) ->
-    @findElementBySelector selector, (err, target) =>
+    @_findElementBySelector selector, (err, target) =>
       return callback err if err?
 
       click = @_browserCall "fire", "click", target
@@ -41,11 +41,10 @@ class ZombieDriver extends Driver
       callback null
     , (err) -> callback err
 
-  getText: (selector) ->
-    # TODO
-    throw new Error "NOT IMPLEMENTED"
+  getText: (callback) ->
+    callback @browser.text()
 
-  findElementBySelector: (selector, callback) ->
+  _findElementBySelector: (selector, callback) ->
     try
       target = @browser.link(selector) or @browser.button(selector) or @browser.querySelector(selector)
     catch err
