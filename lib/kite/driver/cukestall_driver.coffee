@@ -20,6 +20,10 @@ class CukestallDriver extends Driver
     # TODO
     throw new Error "NOT IMPLEMENTED"
 
+  findElementBySelector: (selector, filePath, callback) ->
+    # TODO
+    throw new Error "NOT IMPLEMENTED"
+
   getText: (callback) ->
     @browser.getText callback
 

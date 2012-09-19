@@ -23,7 +23,7 @@ class ZombieDriver extends Driver
     , (err) -> callback err
 
   click: (selector, callback) ->
-    @_findElementBySelector selector, (err, target) =>
+    @findElementBySelector selector, (err, target) =>
       return callback err if err?
 
       click = @_do "fire", "click", target
@@ -41,10 +41,7 @@ class ZombieDriver extends Driver
       callback null
     , (err) -> callback err
 
-  getText: (callback) ->
-    callback @browser.text()
-
-  _findElementBySelector: (selector, callback) ->
+  findElementBySelector: (selector, callback) ->
     try
       target = @browser.link(selector) or @browser.button(selector) or @browser.querySelector(selector)
     catch err
@@ -53,6 +50,9 @@ class ZombieDriver extends Driver
       callback null, target
     else
       callback new Error "Could not find selector \"#{selector}\" in\n #{@browser.html()}"
+
+  getText: (callback) ->
+    callback @browser.text()
 
   _do: (method, args...) ->
     deferred = Q.defer()
