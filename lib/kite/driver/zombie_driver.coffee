@@ -10,6 +10,8 @@ class ZombieDriver extends Driver
     @browser.window.FormData = FormData
     _request = @browser.resources.request
     @browser.resources.request = (method, url, data, headers, callback) =>
+      # clean up previous headers, 'cause zombies are braindead :/
+      delete @browser.headers.accept
       if data instanceof FormData
         headers["content-type"] = "multipart/form-data"
       _request.call @browser.resources, method, url, data, headers, callback
