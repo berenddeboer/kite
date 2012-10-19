@@ -48,7 +48,7 @@ class ZombieDriver extends Driver
       target = @browser.link(selector) or @browser.button(selector) or @browser.querySelector(selector)
     catch err
       return callback err
-    if target
+    if target?
       callback null, target
     else
       callback new Error "Could not find selector \"#{selector}\" in\n #{@browser.html()}"
