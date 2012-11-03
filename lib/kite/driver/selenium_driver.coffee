@@ -44,7 +44,11 @@ class SeleniumDriver extends Driver
     # TODO
     throw new Error "NOT IMPLEMENTED"
 
-  findElementBySelector: (selector, filePath, callback) ->
+  findElementBySelector: (selector, callback) ->
+    # TODO
+    throw new Error "NOT IMPLEMENTED"
+
+  findElementsBySelector: (selector, callback) ->
     # TODO
     throw new Error "NOT IMPLEMENTED"
 

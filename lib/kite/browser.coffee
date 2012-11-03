@@ -18,6 +18,9 @@ class Browser
   query: (selector, callback) ->
     @driver.findElementBySelector selector, callback
 
+  queryAll: (selector, callback) ->
+    @driver.findElementsBySelector selector, callback
+
   getText: (callback) ->
     @driver.getText callback
 

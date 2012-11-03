@@ -45,7 +45,7 @@ class ZombieDriver extends Driver
 
   findElementBySelector: (selector, callback) ->
     try
-      target = @browser.link(selector) or @browser.button(selector) or @browser.querySelector(selector)
+      target = @browser.link(selector) or @browser.button(selector) or @browser.querySelector(selector) # todo: switch to query()?
     catch err
       return callback err
     if target?
@@ -53,8 +53,16 @@ class ZombieDriver extends Driver
     else
       callback new Error "Could not find selector \"#{selector}\" in\n #{@browser.html()}"
 
+  findElementsBySelector: (selector, callback) ->
+    try
+      target = @browser.queryAll selector #todo: add support for link() and button()
+    catch err
+      return callback err
+    callback null, target
+
   getText: (callback) ->
-    callback @browser.text()
+    text =  @browser.text("body")
+    callback null, text
 
   _do: (method, args...) ->
     deferred = Q.defer()
